@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Result Management System</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .card:nth-child(4) {
+            --hue: 45; /* Adjust the hue value for the faculty card */
+            --saturation: 85%; /* Adjust the saturation value for the faculty card */
+            --lightness: 55%; /* Adjust the lightness value for the faculty card */
+        }
+    </style>
+
+</head>
+
+<body>
+    <main class="main flow">
+        <h1 class="main__heading">Result Management System</h1>
+        <div class="main__cards cards">
+            <div class="cards__inner">
+                <div class="cards__card card">
+                    <h2 class="card__heading">Admin Rigts</h2>
+                    <h2 class="card__heading">Only Admin can Access</h2>
+                    <ul role="list" class="card__bullets flow">
+                        <li>Create, update, and delete student accounts</li>
+                        <li>Add, edit, or remove courses and subjects</li>
+                        <li>Enter, edit, or delete grades and results.</li>
+                    </ul>
+                    <a href="adminlogin.html" class="card__cta cta">Let's Go</a>
+                </div>
+
+                <div class="cards__card card">
+                    <h2 class="card__heading">Student Rights</h2>
+                    <h2 class="card__heading">Only Students should Access</h2>
+                    <ul role="list" class="card__bullets flow">
+                        <li>View Grades and Results</li>
+                        <li>See the courses and subjects they are enrolled</li>
+                        <li>Enable students to change their login password</li>
+
+                    </ul>
+                    <a href="student_login.html" class="card__cta cta">Let's Go</a>
+                </div>
+
+                <div class="cards__card card">
+                    <h2 class="card__heading">Faculty Rights</h2>
+                    <h2 class="card__heading">Only Faculty can Access</h2>
+                    <ul role="list" class="card__bullets flow">
+                        <!-- Add faculty rights here -->
+                        <li>Add, edit, or remove courses and subjects</li>
+                        <li>Enter, edit, or delete grades and results.</li>
+                    </ul>
+                    <a href="facultylogin.html" class="card__cta cta">Let's Go</a>
+                </div>
+            </div>
+
+            <div class="overlay cards__inner"></div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

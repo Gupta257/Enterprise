@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Faculty</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            z-index: 9999;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Faculty</h1>
+
+    <form id="facultyForm">
+        <div class="form-group">
+            <label for="facultyID">ID:</label>
+            <input type="text" id="facultyID" name="facultyID" required>
+        </div>
+        <div class="form-group">
+            <label for="facultyName">Name:</label>
+            <input type="text" id="facultyName" name="facultyName" required>
+        </div>
+        <div class="form-group">
+            <label for="facultyEmail">Email:</label>
+            <input type="email" id="facultyEmail" name="facultyEmail" required>
+        </div>
+        <div class="form-group">
+            <label for="facultyPassword">Password:</label>
+            <input type="password" id="facultyPassword" name="facultyPassword" required>
+        </div>
+        <div class="form-group" id="courseContainer">
+            <label for="facultyCourses">Courses:</label>
+            <select id="facultyCourses" name="facultyCourses[]" required>
+                <option value="Course 1">Course 1</option>
+            </select>
+            <button type="button" onclick="addCourse()">Add Course</button>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="popup"></div>
+
+    <script>
+        function addCourse() {
+            const courseContainer = document.getElementById('courseContainer');
+            const select = document.createElement('select');
+            select.name = 'facultyCourses[]';
+            select.required = true;
+            select.innerHTML = `
+                <option value="Course 1">Course 2</option>
+               
+            `;
+            courseContainer.appendChild(select);
+        }
+
+        document.getElementById('facultyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                if (data[key]) {
+                    if (!Array.isArray(data[key])) {
+                        data[key] = [data[key]];
+                    }
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            console.log(data);
+
+            // Show success message
+            const popup = document.getElementById("popup");
+            popup.innerHTML = "Data inserted successfully!";
+            popup.style.display = "block";
+
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+/* Centering the academic year selection form */
+/* ... (previous CSS styles) */
+
+/* Modify your existing CSS to center the form-box section */
+.form-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(207, 253, 200, 0.1);
+    text-align: center; /* Center the content horizontally within the box */
+    margin: 0 auto; /* Center the box horizontally on the page */
+    max-width: 400px; /* Optionally set a maximum width for the form box */
+    position: absolute;
+    top: 50%; /* Center the box vertically at 50% of the window height */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the box both horizontally and vertically */
+}
+body {
+    font-family: 'Outfit', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    background-image: url('2.jpg'); /* Add the path to your background image */
+    background-size: cover; /* Scale the image to cover the entire body */
+    background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+
+.form-group {
+    text-align: left; /* Reset text alignment for the label and input elements */
+}
+
+select, button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    display: block; /* Make the select and button full width */
+    margin: 0 auto; /* Center the select and button within the form box */
+    color: #000; /* Set the text color to black for select and button */
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px; /* Add spacing between the select and button */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Additional styles for dark mode */
+:is(.dark-mode) .form-box {
+    background-color: var(--primary-dark); /* Dark mode background color for the form box */
+    color: #fff; /* Set text color to white in dark mode */
+}
+
+:is(.dark-mode) select, :is(.dark-mode) button {
+    background-color: var(--primary-color); /* Dark mode background color for select and button */
+    color: #fff; /* Set text color to white in dark mode */
+    border: 1px solid transparent;
+}
+
+:is(.dark-mode) button:hover {
+    background-color: #0056b3; /* Dark mode background color on hover */
+}
+
+/* Adjust text color for dark mode */
+:is(.dark-mode) .form-box h1,
+:is(.dark-mode) .form-group label {
+    color: #fff; /* Set text color to white in dark mode */
+}
+
+/* Add Results and Select Academic Year text color in dark mode */
+:is(.dark-mode) .form-box h1 {
+    color: #fff;
+}
+
+:is(.dark-mode) .form-group label {
+    color: #fff;
+}

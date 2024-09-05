@@ -1,0 +1,67 @@
+/* Global styling for the entire page */
+body {
+    font-family: 'Outfit', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    padding: 0 8.4rem;
+}
+
+/* Header styles */
+header {
+    position: relative;
+    box-shadow: 0 4px 17px rgba(0, 0, 0, .1);
+    background: #fff;
+    position: sticky;
+    top: 0;
+}
+
+/* Section title styles */
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+.results-entry-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(207, 253, 200, 0.1);
+    text-align: center; /* Center the content horizontally within the box */
+    margin: 0 auto; /* Center the box horizontally on the page */
+    max-width: 400px; /* Optionally set a maximum width for the form box */
+}
+
+/* Label styles for form fields */
+.form-group label {
+    font-weight: bold;
+}
+
+/* Input field styles (customize as needed) */
+.results-entry-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Button styles (customize as needed) */
+.results-entry-form button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.results-entry-form button:hover {
+    background-color: #0056b3;
+}

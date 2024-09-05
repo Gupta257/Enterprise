@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="addresults.css">
+    <title>Home</title>
+    
+</head>
+<body>
+    <header class="container">
+        <div class="page-header">
+            <div class="logo">
+                <a href="#" class="rounded-logo">
+                    <img src="Facultylogo.png" height="10">Faculty
+                </a>
+            </div>
+            
+            <input type="checkbox" id="click">
+
+            <label for="click" class="mainicon">
+                <div class="menu">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </label>
+            <ul>
+                <li><a href="admin_home.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                
+                <li><a href="addresults.html">Add Results</a></li>
+                
+            </ul>
+            <label class="mode">
+                <input type="checkbox" id="darkModeToggle">
+                <i class='bx bxs-moon'></i>
+            </label>
+        </div>
+    </header>
+
+    <section class="form-box">
+        <div class="main">
+            <h1 class="section-title">Add Results</h1>
+            <!-- Form for selecting the year -->
+            <form id="yearSelectionForm">
+                <div class="form-group">
+                    <label for="year">Select Academic Year:</label>
+                    <select id="year" name="year">
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                    </select>
+                </div>
+
+                <button type="button" id="submitYear">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Your JavaScript for dark mode toggle can remain the same as in admin_home.html
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            darkModeToggle.checked = true;
+        }
+        darkModeToggle.addEventListener('change', () => {
+            if (darkModeToggle.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // JavaScript for handling the form submission
+        document.getElementById("submitYear").addEventListener("click", function() {
+        const selectedYear = document.getElementById("year").value;
+        // Redirect to the new page with the selected year and ID number as query parameters
+        window.location.href = `enter_results.html?year=${selectedYear}`;
+    });
+    </script>
+</body>
+</html>

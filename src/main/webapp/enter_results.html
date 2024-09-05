@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="enter_results.css"> <!-- Create a new CSS file for this page if needed -->
+    <title>Enter Results</title>
+    <style>
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <!-- Header content as per your design -->
+    </header>
+
+    <section class="results-entry-form">
+        <div class="main">
+            <h1 class="section-title">Enter Results</h1>
+            
+            <!-- Form for entering ID numbers, subjects, and marks -->
+            <form id="resultsEntryForm">
+                <div class="form-group">
+                    <label for="idNumber">ID Number:</label>
+                    <input type="text" id="idNumber" name="idNumber" placeholder="Enter ID Number">
+                </div>
+                <div class="form-group">
+                    <label for="subjects"></label>
+                    <div id="subjectsTable"></div>
+                </div>
+                <div class="form-group">
+                    <label for="marks">Marks:</label>
+                    <input type="text" id="marks" name="marks" placeholder="Enter Marks">
+                </div>
+                
+                <button type="button" id="submitResults">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="popup" style="display: none;"></div>
+
+    <script>
+        document.getElementById("submitResults").addEventListener("click", function() {
+            const idNumber = document.getElementById("idNumber").value;
+            const subjects = getSubjectMarks();
+            const marks = document.getElementById("marks").value;
+
+            if (idNumber && Object.keys(subjects).length > 0 && marks) {
+                // Process the entered data as needed (e.g., validation and submission)
+                console.log("ID Number: " + idNumber);
+                console.log("Subjects and Marks: " + JSON.stringify(subjects));
+                console.log("Marks: " + marks);
+
+                // Show success message
+                const popup = document.getElementById("popup");
+                popup.innerHTML = "Data inserted successfully!";
+                popup.style.display = "block";
+            } else {
+                // Show error message
+                const popup = document.getElementById("popup");
+                popup.innerHTML = "Please fill in all the details.";
+                popup.style.display = "block";
+            }
+        });
+
+        function populateSubjects(selectedYear) {
+            const subjectsTable = document.getElementById("subjectsTable");
+            var subjects = [];
+
+            if (selectedYear === "1") {
+                subjects = ["subject1", "subject2", "subject3", "subject4"];
+            } else if (selectedYear === "2") {
+                subjects = ["subject5", "subject6", "subject7", "subject8"];
+            } else if (selectedYear === "3") {
+                subjects = ["subject9", "subject10", "subject11", "subject12"];
+            } else if (selectedYear === "4") {
+                subjects = ["subject13", "subject14", "subject15", "subject16"];
+            }
+
+            var table = document.createElement("table");
+            var header = table.createTHead();
+            var row = header.insertRow(0);
+            var subjectHeader = row.insertCell(0);
+            subjectHeader.innerHTML = "Subjects";
+            var marksHeader = row.insertCell(1);
+            marksHeader.innerHTML = "Marks";
+
+            var tbody = table.createTBody();
+
+            subjects.forEach(function (subject) {
+                var row = tbody.insertRow();
+                var subjectCell = row.insertCell(0);
+                var marksCell = row.insertCell(1);
+                subjectCell.innerHTML = subject;
+                marksCell.innerHTML = '<input type="text" name="marks">';
+            });
+
+            subjectsTable.innerHTML = '';
+            subjectsTable.appendChild(table);
+        }
+
+        function getSubjectMarks() {
+            const subjectRows = document.querySelectorAll("#subjectsTable tbody tr");
+            const subjects = {};
+
+            subjectRows.forEach(function (row) {
+                const subjectName = row.cells[0].textContent;
+                const marks = row.cells[1].querySelector("input").value;
+                subjects[subjectName] = marks;
+            });
+
+            return subjects;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedYear = urlParams.get('year');
+        populateSubjects(selectedYear);
+    </script>
+</body>
+</html>
